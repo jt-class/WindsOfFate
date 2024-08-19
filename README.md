@@ -1,1 +1,1 @@
-# BSIT2024-C
+## BSIT 4C - 2024 Game Development Project
