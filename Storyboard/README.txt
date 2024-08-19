@@ -1,1 +1,1 @@
-"for documents containing scripts, storyline, etc..."
+"Documents containing scripts, storyline, etc..."
