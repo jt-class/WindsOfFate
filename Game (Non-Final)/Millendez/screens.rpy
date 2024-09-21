@@ -240,30 +240,28 @@ style choice_button_text is default:
 
 ## Quick Menu screen ###########################################################
 ##
-## The quick menu is displayed in-game to provide easy access to the out-of-game
-## menus.
+## The quick menu is displayed in-game to provide easy access to the out-of-game menus DURING GAMEPLAY.
 
 screen quick_menu():
 
     ## Ensure this appears on top of other screens.
     zorder 100
-
     if quick_menu:
 
         hbox:
             style_prefix "quick"
 
-            xalign 0.5
+            xalign 0.0
             yalign 1.0
 
             textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
+            ## textbutton _("History") action ShowMenu('history')
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            ## textbutton _("Q.Save") action QuickSave()
+            ## textbutton _("Q.Load") action QuickLoad()
+            textbutton _("Options") action ShowMenu('preferences')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -286,54 +284,41 @@ style quick_button_text:
 ################################################################################
 ## Main and Game Menu Screens
 ################################################################################
-
-## Navigation screen ###########################################################
-##
-## This screen is included in the main and game menus, and provides navigation
-## to other menus, and to start the game.
-
 ## Basically The Main Menu Content
 screen navigation():
 
     vbox:
         style_prefix "navigation"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+        if main_menu:
+            xalign 0.1
 
+        else: ## game_menu format
+            xoffset 60
+            yalign 0.6
+
+        yalign 0.8
         spacing gui.navigation_spacing
 
         if main_menu:
-
             textbutton _("Start") action Start()
-
         else:
-
             textbutton _("Save") action ShowMenu("save")
 
         textbutton _("Load") action ShowMenu("load")
+        textbutton _("Options") action ShowMenu("preferences")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
-
-        if _in_replay:
-
-            textbutton _("End Replay") action EndReplay(confirm=True)
-
+        if main_menu:
+            textbutton _("About") action ShowMenu("about")
         elif not main_menu:
-
             textbutton _("Main Menu") action MainMenu()
 
-        textbutton _("About") action ShowMenu("about")
-
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
             ## Help isn't necessary or relevant to mobile devices.
             textbutton _("Help") action ShowMenu("help")
 
         if renpy.variant("pc"):
-
-            ## The quit button is banned on iOS and unnecessary on Android and
-            ## Web.
+            ## The quit button is banned on iOS and unnecessary on Android and Web.
             textbutton _("Quit") action Quit(confirm=not main_menu)
 
 
@@ -359,15 +344,13 @@ screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
-
     add gui.main_menu_background
 
     ## This empty frame darkens the main menu.
     frame:
         style "main_menu_frame"
 
-    ## The use statement includes another screen inside this one. The actual
-    ## contents of the main menu are in the navigation screen.
+    ## The use statement includes another screen inside this one. The actual contents of the main menu are in the navigation screen.
     use navigation
 
     if gui.show_name:
@@ -392,12 +375,11 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-
 style main_menu_vbox:
-    xalign 1.0
+    xalign 0.5
     xoffset -30
     xmaximum 1200
-    yalign 1.0
+    yalign 0.2
     yoffset -30
 
 style main_menu_text:
@@ -481,8 +463,10 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     textbutton _("Return"):
         style "return_button"
-
         action Return()
+
+        if main_menu:
+            xalign 0.1
 
     label title
 
@@ -537,6 +521,7 @@ style game_menu_label_text:
 
 style return_button:
     xpos gui.navigation_xpos
+
     yalign 1.0
     yoffset -45
 
@@ -734,7 +719,7 @@ screen preferences():
 
     tag menu
 
-    use game_menu(_("Preferences"), scroll="viewport"):
+    use game_menu(_("Options"), scroll="viewport"):
 
         vbox:
 
@@ -1513,8 +1498,8 @@ style pref_vbox:
     variant "medium"
     xsize 675
 
-## Since a mouse may not be present, we replace the quick menu with a version
-## that uses fewer and bigger buttons that are easier to touch.
+## Since a mouse may not be present, we replace the quick menu with a version that uses fewer and bigger buttons 
+## that are easier to touch. (This is the sub-menu that player can interact during gameplay)
 screen quick_menu():
     variant "touch"
 
@@ -1525,7 +1510,7 @@ screen quick_menu():
         hbox:
             style_prefix "quick"
 
-            xalign 0.5
+            xalign 0.0
             yalign 1.0
 
             textbutton _("Back") action Rollback()
@@ -1534,6 +1519,7 @@ screen quick_menu():
             textbutton _("Menu") action ShowMenu()
 
 
+## Style Window for Smartphones.
 style window:
     variant "small"
     background "gui/phone/textbox.png"

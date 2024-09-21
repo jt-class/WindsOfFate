@@ -29,7 +29,7 @@ define config.version = "0.1"
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
-define gui.about = _p(" A Visual Novel Created by BSIT 4.1C")
+define gui.about = _p(" A Visual Novel Created by BSIT 4.1C for subject Game Development")
 
 
 ## A short name for the game used for executables and directories in the built
