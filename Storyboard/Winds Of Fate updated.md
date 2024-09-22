@@ -827,7 +827,21 @@ Her eyes met Josh’s one final time, knowing that whatever she did next would c
 
 The storm raged on, and in that moment, Mari made her final choice.
 
-
+Mga nag participate:
+Pagdato - Chapter guide, Characters and their 
+descriptions 
+Capote - Chapter 2 and the 3 ending
+Cabarles - Decisions for the main character and paths for 
+different ending
+Cuenca - Chapter 2 and chapter 3
+Progilla - Ending (Aurora path)
+Palileo – Chapter 2, 3 and 3.2
+Obana - Chapter 4.2 and chapter guide
+Ola - Chapter 4, chapter guide and the one who analyze 
+the chapters
+Orilla – Chapter 2 and chapter 4
+Villegas – Chapter 2.2 and chapter 3
+Ferrer – Chapter 3, Characters and decision suggestions
 
 ……………..	
 
