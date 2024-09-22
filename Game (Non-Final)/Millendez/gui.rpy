@@ -1,7 +1,4 @@
-﻿################################################################################
-## Initialization
-################################################################################
-
+﻿
 ## The init offset statement causes the initialization statements in this file
 ## to run before init statements in any other file.
 init offset = -2
@@ -18,11 +15,6 @@ define config.check_conflicting_properties = True
 ################################################################################
 ## GUI Configuration Variables
 ################################################################################
-
-
-## Colors ######################################################################
-##
-## The colors of text in the interface.
 
 ## An accent color used throughout the interface to label and highlight text.
 define gui.accent_color = '#ea7fe4'
@@ -60,28 +52,28 @@ define gui.interface_text_color = '#ffffff'
 define gui.text_font = "fonts/anime-ace.regular.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "fonts/anime-ace.regular.ttf"
+define gui.name_text_font = "fonts/IntensaFuente.ttf"
 
-## The font used for out-of-game text. # For Title
-define gui.interface_text_font = "fonts/Blackout.otf"
+## The font used for out-of-game text. # For Title and Categories
+define gui.interface_text_font = "fonts/IntensaFuente.ttf"
 
 ## The size of normal dialogue text.
 define gui.text_size = 33
 
 ## The size of character names.
-define gui.name_text_size = 45
+define gui.name_text_size = 60
 
 ## The size of text in the game's user interface.
-define gui.interface_text_size = 33
+define gui.interface_text_size = 45
 
-## The size of labels in the game's user interface.
+## The size of labels in the game's user interface. (Title Screen)
 define gui.label_text_size = 36
 
 ## The size of text on the notify screen.
 define gui.notify_text_size = 24
 
 ## The size of the game's title.
-define gui.title_text_size = 75
+define gui.title_text_size = 150
 
 
 ## Main and Game Menus #########################################################
@@ -189,7 +181,7 @@ define gui.confirm_button_text_xalign = 0.5
 define gui.page_button_borders = Borders(15, 6, 15, 6)
 
 define gui.quick_button_borders = Borders(15, 6, 15, 0)
-define gui.quick_button_text_size = 21
+define gui.quick_button_text_size = 41
 define gui.quick_button_text_idle_color = gui.idle_small_color
 define gui.quick_button_text_selected_color = gui.accent_color
 
@@ -260,7 +252,7 @@ define gui.notify_ypos = 68
 define gui.choice_spacing = 33
 
 ## Buttons in the navigation section of the main and game menus.
-define gui.navigation_spacing = 6
+define gui.navigation_spacing = 14
 
 ## Controls the amount of spacing between preferences.
 define gui.pref_spacing = 15

@@ -1,1 +1,1 @@
-"Non-final files from the game"
+"Temporary files that will be used for the game"
