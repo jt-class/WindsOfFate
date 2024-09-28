@@ -256,7 +256,7 @@ screen quick_menu():
             textbutton _("Save") action ShowMenu('save')
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            textbutton _("Optn") action ShowMenu('Option')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -290,8 +290,13 @@ screen navigation():
     vbox:
         style_prefix "navigation"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+        if renpy.get_screen("main_menu"):
+            xalign 0.5
+            yalign 0.8
+        else:
+            xoffset 60
+            yalign 0.5
+        
 
         spacing gui.navigation_spacing
 
@@ -307,7 +312,7 @@ screen navigation():
 
         textbutton _("Load") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        textbutton _("Option") action ShowMenu("Option")
 
         if _in_replay:
 
@@ -337,9 +342,12 @@ style navigation_button_text is gui_button_text
 style navigation_button:
     size_group "navigation"
     properties gui.button_properties("navigation_button")
+    
 
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
+    outlines [(absolute(2), "#030303", absolute(5), absolute(0))]
+    xalign 0.5
 
 
 ## Main Menu screen ############################################################
@@ -366,6 +374,8 @@ screen main_menu():
     if gui.show_name:
 
         vbox:
+            xalign 0.5
+            yalign 0.1
             style "main_menu_vbox"
 
             text "[config.name!t]":
@@ -385,7 +395,7 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    # background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -662,6 +672,7 @@ screen file_slots(title):
                     spacing gui.page_spacing
 
                     textbutton _("<") action FilePagePrevious()
+                    key "save_page_prev" action FilePagePrevious()
 
                     if config.has_autosave:
                         textbutton _("{#auto_page}A") action FilePage("auto")
@@ -674,6 +685,7 @@ screen file_slots(title):
                         textbutton "[page]" action FilePage(page)
 
                     textbutton _(">") action FilePageNext()
+                    key "save_page_next" action FilePageNext()
 
                 if config.has_sync:
                     if CurrentScreenName() == "save":
@@ -725,11 +737,11 @@ style slot_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#preferences
 
-screen preferences():
+screen Option():
 
     tag menu
 
-    use game_menu(_("Preferences"), scroll="viewport"):
+    use game_menu(_("Option"), scroll="viewport"):
 
         vbox:
 

@@ -57,13 +57,13 @@ define gui.interface_text_color = '#ffffff'
 ## Fonts and Font Sizes ########################################################
 
 ## The font used for in-game text.
-define gui.text_font = "DejaVuSans.ttf"
+define gui.text_font = "fonts/anime-ace.regular.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "fonts/anime-ace.regular.ttf"
 
 ## The font used for out-of-game text.
-define gui.interface_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "fonts/anime-ace.regular.ttf"
 
 ## The size of normal dialogue text.
 define gui.text_size = 33
@@ -435,7 +435,7 @@ init python:
         gui.text_size = 45
         gui.name_text_size = 54
         gui.notify_text_size = 38
-        gui.interface_text_size = 45
+        gui.interface_text_size = 35
         gui.button_text_size = 45
         gui.label_text_size = 51
 
