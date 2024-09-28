@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Winds Of Fate")
+define config.name = _("WindsOfFate")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -143,7 +143,7 @@ default preferences.afm_time = 15
 ## This generally should not be changed, and if it is, should always be a
 ## literal string, not an expression.
 
-define config.save_directory = "WindsOfFate-1725101212"
+define config.save_directory = "WindsOfFate-1727536047"
 
 
 ## Icon ########################################################################
