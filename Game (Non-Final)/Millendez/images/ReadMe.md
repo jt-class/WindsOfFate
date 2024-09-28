@@ -1,0 +1,1 @@
+Placeholder for Images to be used for the game.
