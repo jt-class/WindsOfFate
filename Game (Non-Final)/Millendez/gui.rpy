@@ -16,7 +16,7 @@ define config.check_conflicting_properties = True
 ## GUI Configuration Variables
 ################################################################################
 
-## An accent color used throughout the interface to label and highlight text.
+## An accent color used throughout the interface to label and highlight text. Title Text
 define gui.accent_color = '#ea7fe4'
 
 ## The color used for a text button when it is neither selected nor hovered.
@@ -45,6 +45,7 @@ define gui.hover_muted_color = '#005b7a'
 define gui.text_color = '#ffffff'
 define gui.interface_text_color = '#ffffff'
 
+define game_menu_nav_button = None
 
 ## Fonts and Font Sizes ########################################################
 

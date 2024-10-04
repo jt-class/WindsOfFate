@@ -1,25 +1,13 @@
-﻿
-
-# The script of the game goes in this file.
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
+﻿# The script of the game goes in this file.
+# Declare characters used by this game. The color argument colorizes the name of the character.
 define m = Character("Mari")
-
-image Intro_BG1 = "Transitions/Intro1.PNG"
-image Intro_BG2 = "Transitions/Intro2.PNG"
-
-image sleeping = "Backgrounds/bg black.png"
-image blurred_room = "Backgrounds/bg blur ceilingbedroom.png"  # Blurred background
-image room = "Backgrounds/bg ceilingbedroom.png"  # Clear background
-image bedroom ="Backgrounds/bg bedroom with bed.png"
-image storm = "Backgrounds/bg storm in window draw.png"
 define blink = Fade(0.1, 0.05, 0.1, color="#000")
+define persistent.storm = False
 
-label splashscreen: # Intro before main menu
-    $ renpy.movie_cutscene('videos/splash.webm')
-    return
-
+##label splashscreen: # Intro before main menu
+##    $ renpy.movie_cutscene('videos/splash.webm')
+##    pause 2.0
+##    return
 
 label start:
 
@@ -28,15 +16,14 @@ label start:
         yalign 0.5
         pause 1.0  # Pause for 1 second to simulate waking up delay
 
-    # Transition to simulate blinking and focusing
-    transform wakeup_focus:
-        linear 1.0 zoom 1.0  # Slowly zoom out to represent focusing
-
+    transform wakeup_focus: # Transition to simulate blinking and focusing slowly zoom out to represent focusing
+        linear 1.0 zoom 1.0  
+    
     # The game starts here.
     scene Intro_BG1 with fade
-    "An Unknown Studio Presents"
+    pause 3.5
     scene Intro_BG2 with fade
-    "Developed By Bachelor of Science in Information Technology 4.1C"
+    pause 3.5
 
     # These display lines of dialogue.
     scene sleeping with fade
@@ -50,6 +37,9 @@ label start:
     pause 2.0 
     scene sleeping with fade
     scene storm
+
+    $ persistent.storm = True
+
     "The wind howls like a living thing, and the rain lashes against her window with a force that makes the glass rattle."
     "The house around her groans as if struggling to stay together. Confused and frightened, 
     Mari stumbles out of bed, her heart pounding as she tries to make sense of the chaos."
@@ -61,8 +51,6 @@ label start:
 
     # Choice 01 - When the player was given a choice, this will represent to.
     menu:
-        "..."
-
         "Leave":
 
             jump leave

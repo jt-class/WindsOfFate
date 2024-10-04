@@ -1,0 +1,1 @@
+Placeholder For Character Images
