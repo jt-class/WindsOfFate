@@ -6,36 +6,30 @@
 
 
 ## Basics ######################################################################
-
 ## A human-readable name of the game. This is used to set the default window
 ## title, and shows up in the interface and error reports.
 ##
 ## The _() surrounding the string marks it as eligible for translation.
-
 define config.name = _("Winds Of Fate")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
-
 define gui.show_name = True
 
 
 ## The version of the game.
-
-define config.version = "0.1"
+define config.version = "0.10"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
-
 define gui.about = _p(" A Visual Novel Created by BSIT 4.1C for subject Game Development")
 
 
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
-
 define build.name = "WindsOfFate"
 
 
@@ -63,7 +57,6 @@ define config.has_voice = True
 
 # define config.main_menu_music = "main-menu-theme.ogg"
 
-
 ## Transitions #################################################################
 ##
 ## These variables set transitions that are used when certain events occur.
@@ -71,23 +64,19 @@ define config.has_voice = True
 ## transition should be used.
 
 ## Entering or exiting the game menu.
-
 define config.enter_transition = dissolve
 define config.exit_transition = dissolve
 
 
 ## Between screens of the game menu.
-
-define config.intra_transition = dissolve
+define config.intra_transition = Dissolve (.5)
 
 
 ## A transition that is used after a game has been loaded.
-
 define config.after_load_transition = None
 
 
 ## Used when entering the main menu after the game has ended.
-
 define config.end_game_transition = None
 
 
