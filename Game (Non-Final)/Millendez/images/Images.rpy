@@ -17,7 +17,7 @@ image mari_def = "images/Characters/Mari/mc_mari.png"
 #image mari_concerned = "images/Characters/Mari/"
 
 # Aurora
-# image aurora_def = "images/Characters/Aurora/"
+#image aurora_def = "images/Characters/Aurora/"
 #image aurora_happy = "images/Characters/Aurora/"
 #image aurora_sad = "images/Characters/Aurora/"
 #image aurora_freakout = "images/Characters/Aurora/"
@@ -40,8 +40,47 @@ image room_night = "Backgrounds/room_night.png"
 
 # Collectibles
 
-# BG Journal
+# BG Journal Pic
+define pic_journal1 = "gui/butterfly_side.png"
 
 # Character Info
+define mari_profile = "images/Characters/Mari/mc_mari.png"
+define aurora_profile = "images/Characters/Aurora/"
+define bellatrix_profile = "images/Characters/"
+define ian_profile = "images/Characters/"
+define mary_profile = "images/Characters/"
+define noel_profile = "images/Characters/"
+define aluna_profile = "images/Characters/"
+define josh_profile = "images/Characters/"
+define kurt_profile = "images/Characters/"
+define jennie_profile = "images/Characters/"
+define larry_profile = "images/Characters/"
+define victoria_profile = "images/Characters/"
+define nathan_profile = "images/Characters/"
+define emma_profile = "images/Characters/"
+define dylan_profile = "images/Characters/"
+define corazon_profile = "images/Characters/"
 
 # ImageButton to be used
+define chap_button_idle = "gui/button/chapter_button.png"
+define chap_button_hover = "gui/button/chapter_button_hover.png"
+
+# GUI BG
+define ovl_tablet = "gui/overlay/Tablet.png"
+define frame_info = "gui/frame.png"
+define bg_journal = "gui/bg_journal.jpg"
+define collect_frame = "gui/button/choice_idle_background.png"
+
+
+
+## For Album Screen ##
+image locked = "AlbumPic/locked.png" # When the image is locked
+
+# Unlockable Pictures
+image stormy = "Backgrounds/bg storm in window draw.png"
+
+# Thumbnails
+image sample = "AlbumPic/Thumbnails/sam.png"
+
+# BG for Album Menu
+image bg = "gui/main_menu.png"
