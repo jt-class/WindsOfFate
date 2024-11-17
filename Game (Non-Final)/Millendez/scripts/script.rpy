@@ -14,10 +14,36 @@ define l = Character("Larry")
 define blink = Fade(0.1, 0.05, 0.1, color="#000")
 
 # Persistent/Flags - used for record the stats permanently or for unlocking/locking content.
-define persistent.storm = False
+# For Chapter Selection
 define persistent.chapter1 = False
+define persistent.chapter2 = False
+define persistent.chapter3 = False
+define persistent.chapter4 = False
+define persistent.chapter5 = False
+
+# For Album Pictures
+define persistent.storm = False
+
+# For Unlocking Character Profiles
 define persistent.aurora = False
-define persistent.power = False
+define persistent.bellatrix = False
+define persistent.ian = False
+define persistent.mary = False
+define persistent.noel = False
+define persistent.aluna = False
+define persistent.josh = False
+define persistent.kurt = False
+define persistent.jennie = False
+define persistent.larry = False
+define persistent.victoria = False
+define persistent.nathan = False
+define persistent.emma = False
+define persistent.dylan = False
+define persistent.corazon = False
+
+# MC Powers/Game Conditions
+define persistent.MC_power = False
+define persistent.Play = False
 
 #label splashscreen: # Intro before main menu
 #    $ renpy.movie_cutscene('videos/splash.webm')
@@ -28,6 +54,11 @@ define persistent.power = False
 label start():
 
     $ persistent.chapter1 = True
+    $ persistent.Play = True
+
+    $ persistent.aurora = True
+    $ persistent.bellatrix = True
+
 
     transform wakeup_blur: # Transitions # Blur the scene to indicate waking up in a daze
         xalign 0.5
@@ -137,11 +168,40 @@ label outside:
     m "This is awful. The city is underwater, and there’s so much debris"
     m " People are drowning, clinging to rooftops, and being swept away."
 
-    # play music ""
+    # play music "soundofstorm.mp3"
     m "The sound of the storm is drowning out everything. It’s all so devastating."
 
     scene rooftop_view with dissolve
     "The entire city is submerged under floodwaters. Streets she once knew are now rivers, churning with debris—cars, broken furniture, and uprooted trees."
     "The water is everywhere, drowning everything in its path."
 
-    return
+    # play music "criespeople.mp3"
+    "Mari can hear the distant cries of people, their voices muffled by the roar of the storm."
+    # show bg people on the roof
+    "Some are clinging to rooftops, others are being swept away by the relentless current. The scene is one of utter devastation."
+    # show bg room
+    m "I’m back in my room, but that vision... it felt so real. "
+    # show hands glowing
+    m "My hands are glowing, but I don’t understand why.I can’t stay here; I have to get to the ESTIAI University building. It might be my only chance."
+    # hide hands glowing
+
+    # show mari gasping breath
+    "The vision is so intense, so real, that it leaves Mari gasping for breath when it finally fades."
+
+    m "I need to go back to my house!"
+
+    # show bg city underflood
+    scene stormWindow with fade
+    "She’s back in her bedroom at her house, but the memory of the flooded city lingers in her mind, too vivid to ignore. "
+
+    show mc_mari at center with dissolve # mari shock
+    "She felt something in her hand"
+
+    #scene glowing hand
+    "She looks down at her hands, and to her shock, they’re glowing with a soft, eerie light."
+    "She doesn’t understand what’s happening, but she knows one thing—she can’t stay here."
+    # hide glowing hand
+    
+
+    return 
+
