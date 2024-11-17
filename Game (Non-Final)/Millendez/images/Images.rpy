@@ -24,6 +24,118 @@ image mari_def = "images/Characters/Mari/mc_mari.png"
 #image aurora_angry = "images/Characters/Aurora/"
 #image aurora_concerned = "images/Characters/Aurora/"
 
+# Bellatrix
+#image bellatrix_def = "images/Characters/Bellatrix/"
+#image bellatrix_happy = "images/Characters/Bellatrix/"
+#image bellatrix_sad = "images/Characters/Bellatrix/"
+#image bellatrix_freakout = "images/Characters/Bellatrix/"
+#image bellatrix_angry = "images/Characters/Bellatrix/"
+#image bellatrix_concerned = "images/Characters/Bellatrix/"
+
+# Ian
+#image ian_def = "images/Characters/Ian/"
+#image ian_happy = "images/Characters/Ian/"
+#image ian_sad = "images/Characters/Ian/"
+#image ian_freakout = "images/Characters/Ian/"
+#image ian_angry = "images/Characters/Ian/"
+#image ian_concerned = "images/Characters/Ian/"
+
+# Mary
+#image mary_def = "images/Characters/Mary/"
+#image mary_happy = "images/Characters/Mary/"
+#image mary_sad = "images/Characters/Mary/"
+#image mary_freakout = "images/Characters/Mary/"
+#image mary_angry = "images/Characters/Mary/"
+#image mary_concerned = "images/Characters/Mary/"
+
+# Noel
+#image noel_def = "images/Characters/Noel/"
+#image noel_happy = "images/Characters/Noel/"
+#image noel_sad = "images/Characters/Noel/"
+#image noel_freakout = "images/Characters/Noel/"
+#image noel_angry = "images/Characters/Noel/"
+#image noel_concerned = "images/Characters/Noel/"
+
+# Aluna
+#image aluna_def = "images/Characters/Aluna/"
+#image aluna_happy = "images/Characters/Aluna/"
+#image aluna_sad = "images/Characters/Aluna/"
+#image aluna_freakout = "images/Characters/Aluna/"
+#image aluna_angry = "images/Characters/Aluna/"
+#image aluna_concerned = "images/Characters/Aluna/"
+
+# Josh
+#image josh_def = "images/Characters/Josh/"
+#image josh_happy = "images/Characters/Josh/"
+#image josh_sad = "images/Characters/Josh/"
+#image josh_freakout = "images/Characters/Josh/"
+#image josh_angry = "images/Characters/Josh/"
+#image josh_concerned = "images/Characters/Josh/"
+
+# Kurt
+#image kurt_def = "images/Characters/Kurt/"
+#image kurt_happy = "images/Characters/Kurt/"
+#image kurt_sad = "images/Characters/Kurt/"
+#image kurt_freakout = "images/Characters/Kurt/"
+#image kurt_angry = "images/Characters/Kurt/"
+#image kurt_concerned = "images/Characters/Kurt/"
+
+# Jennie
+#image jennie_def = "images/Characters/Jennie/"
+#image jennie_happy = "images/Characters/Jennie/"
+#image jennie_sad = "images/Characters/Jennie/"
+#image jennie_freakout = "images/Characters/Jennie/"
+#image jennie_angry = "images/Characters/Jennie/"
+#image jennie_concerned = "images/Characters/Jennie/"
+
+# Larry
+#image larry_def = "images/Characters/Larry/"
+#image larry_happy = "images/Characters/Larry/"
+#image larry_sad = "images/Characters/Larry/"
+#image larry_freakout = "images/Characters/Larry/"
+#image larry_angry = "images/Characters/Larry/"
+#image larry_concerned = "images/Characters/Larry/"
+
+# Victoria
+#image victoria_def = "images/Characters/Victoria/"
+#image victoria_happy = "images/Characters/Victoria/"
+#image victoria_sad = "images/Characters/Victoria/"
+#image victoria_freakout = "images/Characters/Victoria/"
+#image victoria_angry = "images/Characters/Victoria/"
+#image victoria_concerned = "images/Characters/Victoria/"
+
+# Nathan
+#image nathan_def = "images/Characters/Nathan/"
+#image nathan_happy = "images/Characters/Nathan/"
+#image nathan_sad = "images/Characters/Nathan/"
+#image nathan_freakout = "images/Characters/Nathan/"
+#image nathan_angry = "images/Characters/Nathan/"
+#image nathan_concerned = "images/Characters/Nathan/"
+
+# Emma
+#image emma_def = "images/Characters/Emma/"
+#image emma_happy = "images/Characters/Emma/"
+#image emma_sad = "images/Characters/Emma/"
+#image emma_freakout = "images/Characters/Emma/"
+#image emma_angry = "images/Characters/Emma/"
+#image emma_concerned = "images/Characters/Emma/"
+
+# Dylan
+#image dylan_def = "images/Characters/Dylan/"
+#image dylan_happy = "images/Characters/Dylan/"
+#image dylan_sad = "images/Characters/Dylan/"
+#image dylan_freakout = "images/Characters/Dylan/"
+#image dylan_angry = "images/Characters/Dylan/"
+#image dylan_concerned = "images/Characters/Dylan/"
+
+# Corazon
+#image corazon_def = "images/Characters/Corazon/"
+#image corazon_happy = "images/Characters/Corazon/"
+#image corazon_sad = "images/Characters/Corazon/"
+#image corazon_freakout = "images/Characters/Corazon/"
+#image corazon_angry = "images/Characters/Corazon/"
+#image corazon_concerned = "images/Characters/Corazon/"
+
 # Background Location
 image blurred_room = "Backgrounds/bg_blurceilingbedroom.png"  # Blurred background
 image room = "Backgrounds/bg_ceilingbedroom.png"  # Clear background
@@ -70,8 +182,6 @@ define ovl_tablet = "gui/overlay/Tablet.png"
 define frame_info = "gui/frame.png"
 define bg_journal = "gui/bg_journal.jpg"
 define collect_frame = "gui/button/choice_idle_background.png"
-
-
 
 ## For Album Screen ##
 image locked = "AlbumPic/locked.png" # When the image is locked
