@@ -10,18 +10,18 @@ screen collectibles_menu():
 
         vbox:
             imagebutton action ShowMenu("c1_collect"):
-                idle "gui/button/chapter_button.png"
-                hover "gui/button/chapter_button_hover.png"         
+                idle chap_button_idle
+                hover chap_button_hover         
             text "Chapter 1" style "text_pos"
         vbox:
             imagebutton action ShowMenu("c2_collect"):
-                idle "gui/button/chapter_button.png"
-                hover "gui/button/chapter_button_hover.png"         
+                idle chap_button_idle
+                hover chap_button_hover         
             text "Chapter 2" style "text_pos"
         vbox:
             imagebutton action ShowMenu("c3_collect"):
-                idle "gui/button/chapter_button.png"
-                hover "gui/button/chapter_button_hover.png"         
+                idle chap_button_idle
+                hover chap_button_hover         
             text "Chapter 3" style "text_pos"
 
     hbox:
@@ -31,13 +31,13 @@ screen collectibles_menu():
 
         vbox:
             imagebutton action ShowMenu("c4_collect"):
-                idle "gui/button/chapter_button.png"
-                hover "gui/button/chapter_button_hover.png"  
+                idle chap_button_idle
+                hover chap_button_hover  
             text "Chapter 4" style "text_pos"
         vbox:
             imagebutton action ShowMenu("c5_collect"):
-                idle "gui/button/chapter_button.png"
-                hover "gui/button/chapter_button_hover.png"
+                idle chap_button_idle
+                hover chap_button_hover
             text "Chapter 5" style "text_pos"
 
 screen c1_collect():
@@ -48,7 +48,7 @@ screen c1_collect():
     hbox:
         yalign 0.2
         xoffset -100
-        add "gui/button/choice_idle_background.png" at Transform (xsize = 750)
+        add collect_frame at Transform (xsize = 750)
         text "Chapter 1: The Beginning" style "collect_chap"
         
         
@@ -65,7 +65,7 @@ screen c2_collect():
     hbox:
         yalign 0.2
         xoffset -100
-        add "gui/button/choice_idle_background.png" at Transform (xsize = 750)
+        add collect_frame at Transform (xsize = 750)
         text "Chapter 2: ????" style "collect_chap"
 
     textbutton _("Back") action ShowMenu("collectibles_menu"):
@@ -81,7 +81,7 @@ screen c3_collect():
     hbox:
         yalign 0.2
         xoffset -100
-        add "gui/button/choice_idle_background.png" at Transform (xsize = 750)
+        add collect_frame at Transform (xsize = 750)
         text "Chapter 3: ????" style "collect_chap"
 
     textbutton _("Back") action ShowMenu("collectibles_menu"):
@@ -97,7 +97,7 @@ screen c4_collect():
     hbox:
         yalign 0.2
         xoffset -100
-        add "gui/button/choice_idle_background.png" at Transform (xsize = 750)
+        add collect_frame at Transform (xsize = 750)
         text "Chapter 4: ????" style "collect_chap"
 
     textbutton _("Back") action ShowMenu("collectibles_menu"):
@@ -113,7 +113,7 @@ screen c5_collect():
     hbox:
         yalign 0.2
         xoffset -100
-        add "gui/button/choice_idle_background.png" at Transform (xsize = 750)
+        add collect_frame at Transform (xsize = 750)
         text "Chapter 5: ????" style "collect_chap"
 
     textbutton _("Back") action ShowMenu("collectibles_menu"):

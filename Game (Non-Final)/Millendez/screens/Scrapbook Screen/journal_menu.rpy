@@ -1,11 +1,10 @@
 define page_num = "Page 1"
 define j1Page1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nEtiam convallis ultrices nibh id consectetur. Mauris facilisis,\naugue quis rhoncus auctor, nisi elit mattis magna, "
-define pic_journal1 = "gui/butterfly_side.png"
 
 screen scrapbook(journal_screen = True, collectibles_menu = True, character_info = True):
 
     tag menu
-    add "gui/bg_journal.jpg"
+    add bg_journal
 
     hbox:
         style "scrapbook_menus"
