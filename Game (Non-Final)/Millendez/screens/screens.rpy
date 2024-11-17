@@ -335,7 +335,14 @@ screen navigation():
         yalign 0.8
         spacing 3
         #Start()
-        textbutton _("Start") action ShowMenu("confirm_play")
+
+        textbutton _("Start"):
+
+            if persistent.Play:
+                action ShowMenu("confirm_play")
+            else:
+                action Start()
+            
         textbutton _("Continue") action ShowMenu("load")
         textbutton _("Select Chapter") action ShowMenu("select_chapter")
         textbutton _("Photo Album") action ShowMenu("album_UI_M")
@@ -1007,7 +1014,7 @@ screen confirm_play(): # Pop-up window when player wants to play from the begini
             yalign .5
             spacing 45
 
-            label _("Are you sure you want to play the game? (All progress will reset.)"):
+            label _("Are you sure you want to play the game from start? (All progress will reset.)"):
                 style "confirm_prompt"
                 xalign 0.5
 
@@ -1844,7 +1851,7 @@ screen quick_menu(): ## Android Variant
                 yalign 0.9
                 action ShowMenu("journal_screen")
 
-            if persistent.power: # Kapag Nagkaroon na ng Power si MC, saka lang aapear ang option na to
+            if persistent.MC_power: # Kapag Nagkaroon na ng Power si MC, saka lang aapear ang option na to
                 imagebutton:
                     idle "gui/button/rewind_button.png"
                     #hover "gui/button/rewind_button_hover.png"
