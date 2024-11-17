@@ -13,7 +13,7 @@ screen album_UI_M(album_UI_M = True, album_UI_2 = False, album_UI_3 = False, alb
     tag menu
 
     add gui.main_menu_background
-    add "gui/overlay/Tablet.png"
+    add ovl_tablet
 
     text "Photo Album" xalign 0.5 yalign 0.1:
         font gui.interface_text_font
@@ -153,6 +153,3 @@ screen album_UI_5():
     tag menu
 
     use album_UI_M (album_UI_5 = True)
-
-
-
