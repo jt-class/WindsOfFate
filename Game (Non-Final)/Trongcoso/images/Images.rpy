@@ -16,6 +16,15 @@ image mari_def = "images/Characters/Mari/mc_mari.png"
 #image mari_vertigo = "images/Characters/Mari/"
 #image mari_concerned = "images/Characters/Mari/"
 
+#Mari's Mom
+#image mari's_mom_def = "images/Characters/Mari's_Mom/"
+#image mari's_mom_happy = "images/Characters/Mari's_Mom/"
+#image mari's_mom_sad = "images/Characters/Mari's_Mom/"
+#image mari's_mom_freakout = "images/Characters/Mari's_Mom/"
+#image mari's_mom_angry = "images/Characters/Mari's_Mom/"
+#image mari's_mom_concerned = "images/Characters/Mari's_Mom/"
+
+
 # Aurora
 #image aurora_def = "images/Characters/Aurora/"
 #image aurora_happy = "images/Characters/Aurora/"
@@ -23,6 +32,32 @@ image mari_def = "images/Characters/Mari/mc_mari.png"
 #image aurora_freakout = "images/Characters/Aurora/"
 #image aurora_angry = "images/Characters/Aurora/"
 #image aurora_concerned = "images/Characters/Aurora/"
+
+# Josh
+#image josh_def = "images/Characters/Josh/"
+#image josh_happy = "images/Characters/Josh/"
+#image josh_sad = "images/Characters/Josh/"
+#image josh_freakout = "images/Characters/Josh/"
+#image josh_angry = "images/Characters/Josh/"
+#image josh_concerned = "images/Characters/Josh/"
+
+# Kurt
+#image kurt_def = "images/Characters/Kurt/"
+#image kurt_happy = "images/Characters/Kurt/"
+#image kurt_sad = "images/Characters/Kurt/"
+#image kurt_freakout = "images/Characters/Kurt/"
+#image kurt_angry = "images/Characters/Kurt/"
+#image kurt_concerned = "images/Characters/Kurt/"
+
+# Larry
+#image larry_def = "images/Characters/Larry/"
+#image larry_happy = "images/Characters/Larry/"
+#image larry_sad = "images/Characters/Larry/"
+#image larry_freakout = "images/Characters/Larry/"
+#image larry_angry = "images/Characters/Larry/"
+#image larry_concerned = "images/Characters/Larry/"
+
+
 
 # Background Location
 image blurred_room = "Backgrounds/bg_blurceilingbedroom.png"  # Blurred background
@@ -38,12 +73,21 @@ image rooftop_view = "Backgrounds/rooftop_view.png"
 
 image room_night = "Backgrounds/room_night.png"
 
+image blurred_classroom = "Backgrounds/blurclassrom_day.png"
+image classroom = "Backgrounds/classroom_day.png"
+image frontdesk = "Backgrounds/classroom_frontDesk.png"
+image hallway = "Backgrounds/hallway_day.png"
+image school_hallway = "Backgrounds/school_Hallway.png"
+image restroom = "Backgrounds/restroom.jpg"
+image street_home ="Backgrounds/street_2Home.png"
+
 # Collectibles
 
 # BG Journal Pic
 define pic_journal1 = "gui/butterfly_side.png"
 
 # Character Info
+#define mari's_mom_profile = "images/Characters/Mari's_Mom/"
 define mari_profile = "images/Characters/Mari/mc_mari.png"
 define aurora_profile = "images/Characters/Aurora/"
 define bellatrix_profile = "images/Characters/"
