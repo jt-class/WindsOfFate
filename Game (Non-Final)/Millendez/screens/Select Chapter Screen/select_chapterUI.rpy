@@ -18,37 +18,46 @@ screen select_chapter():
         style "chapter_pos"
 
         grid 5 1:
-        
             spacing 100
             vbox:
-                imagebutton action Start('start'):
-                    idle chap_button_idle
-                    hover chap_button_hover
-                text "Chapter 1" style "chapter_text_pos"
-
+                vbox:
+                    imagebutton action Start('start'):
+                        idle chap_button_ph1
+                        hover chap_button_ph2
+                    text "Chapter 1" style "chapter_text_pos"
+                add chThumb1 xalign 0.5 yoffset -335
+                
             vbox:
-                imagebutton action Start('chapter2'):
-                    idle chap_button_idle
-                    hover chap_button_hover
-                text "Chapter 2" style "chapter_text_pos"
+                vbox:
+                    imagebutton action Start('chapter2'):
+                        idle chap_button_ph1
+                        hover chap_button_ph2
+                    text "Chapter 2" style "chapter_text_pos"
+                add chThumb2 xalign 0.5 yoffset -335
             
             vbox:
-                imagebutton action Start('chapter3'):
-                    idle chap_button_idle
-                    hover chap_button_hover
-                text "Chapter 3" style "chapter_text_pos"
+                vbox:
+                    imagebutton action Start('chapter3'):
+                        idle chap_button_ph1
+                        hover chap_button_ph2
+                    text "Chapter 3" style "chapter_text_pos"
+                add chThumb3 xalign 0.5 yoffset -335
             
             vbox:
-                imagebutton action Start('chapter4'):
-                    idle chap_button_idle
-                    hover chap_button_hover
-                text "Chapter 4" style "chapter_text_pos"
+                vbox:
+                    imagebutton action Start('chapter4'):
+                        idle chap_button_ph1
+                        hover chap_button_ph2
+                    text "Chapter 4" style "chapter_text_pos"
+                add chThumb4 xalign 0.5 yoffset -335
             
             vbox:
-                imagebutton action Start('chapter5'):
-                    idle chap_button_idle
-                    hover chap_button_hover
-                text "Chapter 5" style "chapter_text_pos"
+                vbox:
+                    imagebutton action Start('chapter5'):
+                        idle chap_button_ph1
+                        hover chap_button_ph2
+                    text "Chapter 5" style "chapter_text_pos"
+                add chThumb5 xalign 0.5 yoffset -335
 
     # if chapter are not unlocked, the pop up message should appear that player required to unlock (or nah...)
 
@@ -61,7 +70,12 @@ screen select_chapter():
 
 style chapter_pos is default:
     xalign 0.5
-    yalign 0.6
+    yalign 0.8
 
-style chapter_text_pos is text_pos # 
+style chapter_text_pos:
+    xalign 0.5
+    yoffset -50
+    font gui.interface_text_font
+    color "#000000"
+    size 32
     
