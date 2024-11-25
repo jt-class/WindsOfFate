@@ -212,11 +212,18 @@ style input:
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
 screen choice(items):
-    style_prefix "choice"
 
+    # style_prefix "choice" # set the style of choice screen to choice
+    
     vbox:
-        for i in items:
-            textbutton i.caption action i.action
+        xalign 0.5
+        yalign 0.8
+
+        grid 2 2:
+            spacing 40
+            for i in items:
+                # i could set this into image button instead but how about the text
+                textbutton i.caption action i.action
 
 
 style choice_vbox is vbox
@@ -225,9 +232,8 @@ style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
+    ypos 800
     yanchor 0.5
-
     spacing gui.choice_spacing
 
 style choice_button is default:
@@ -251,17 +257,53 @@ screen quick_menu(): ## PC VARIANT
         hbox:
             style_prefix "quick"
 
-            xalign 0.0
+            xoffset 50
             yalign 1.0
+            spacing 50
 
-            textbutton _("Back") action Rollback()
-            ## textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            ## textbutton _("Save") action ShowMenu('save')
-            ## textbutton _("Q.Save") action QuickSave()
-            ## textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Menu") action ShowMenu('pause_menu')
+            imagebutton: # History Button if the play want to check previous conversation
+                idle "gui/button/quick_history.png"
+                hover "gui/button/quick_history_hover.png"
+                yalign 0.5
+                action ShowMenu('history')
+
+            imagebutton: # Skip the Entire Dialogue
+                idle "gui/button/quick_skip.png"
+                hover "gui/button/quick_skip_hover.png"
+                selected "gui/button/quick_skip_hover.png"
+                yalign 0.5
+                action Skip() alternate Skip(fast=True, confirm=True)
+
+            imagebutton: # Auto-Forward so the player no need to click every transition
+                idle "gui/button/quick_play.png"
+                hover "gui/button/quick_play_hover.png"
+                yalign 0.5
+                action Preference("auto-forward", "toggle")
+
+
+            imagebutton: # Directly go to pause menu
+                idle "gui/button/quick_pause.png"
+                hover "gui/button/quick_pause_hover.png"
+                yalign 0.5
+                action ShowMenu("pause_menu")
+        
+        hbox:
+            style_prefix "quick"
+            xalign 1.0
+            yalign 1.0
+            spacing 30
+
+            imagebutton:
+                idle "gui/button/journal_logo.png"
+                #hover "gui/button/journal_logo_hover.png"
+                yalign 0.9
+                action ShowMenu("journal_screen")
+
+            imagebutton:
+                idle "gui/button/rewind_button.png"
+                #hover "gui/button/rewind_button_hover.png"
+                yalign 0.9
+                action ShowMenu()
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -292,11 +334,18 @@ screen navigation():
         xalign 0.1
         yalign 0.8
         spacing 3
-    
-        textbutton _("Start") action Start()
+        #Start()
+
+        textbutton _("Start"):
+
+            if persistent.Play:
+                action ShowMenu("confirm_play")
+            else:
+                action Start()
+            
         textbutton _("Continue") action ShowMenu("load")
         textbutton _("Select Chapter") action ShowMenu("select_chapter")
-        textbutton _("Photo Album") action ShowMenu("album_UI")
+        textbutton _("Photo Album") action ShowMenu("album_UI_M")
         textbutton _("Options") action ShowMenu("preferences")
         textbutton _("About Us") action ShowMenu("about_us")
 
@@ -328,6 +377,7 @@ screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
+
     add gui.main_menu_background
 
     ## This empty frame darkens the main menu.
@@ -341,14 +391,13 @@ screen main_menu():
 
         vbox:
             style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
+            add "gui/title_logo2.png"
 
         vbox:
             xalign 1.0
             yalign 1.0
             xoffset -10
+            # Siguro dito nadin ilalagay yung mga logo ng "Studio"
             text "Winds Of Fate v[config.version]":
                 style "main_menu_version"
         
@@ -395,8 +444,10 @@ screen game_menu(title, scroll = None, yinitial=0.0, spacing=0):
 
     if main_menu:
         add gui.main_menu_background
+        add "gui/overlay/Tablet.png"
     else:
         add gui.game_menu_background
+        add "gui/overlay/Tablet.png"
         
     frame:
 
@@ -443,7 +494,8 @@ screen game_menu(title, scroll = None, yinitial=0.0, spacing=0):
 
     ## will use the navigation menu, don't remove
     # use navigation 
-    label title
+    
+    label title # for the label text of each screen.
     
     ## Press Esc to go back to main menu screen
     if main_menu:
@@ -561,6 +613,7 @@ style about_us_text:
     xalign 0.0
     xoffset 10
     yoffset 80
+    color "#000000"
     font gui.interface_text_font
     size 45
 
@@ -609,6 +662,7 @@ init python:
 
 
 screen file_slots(title, delete=False, load=False, save=False):
+    
     default page_name_value = FilePageNameInputValue(auto=_("Autosaves"))
 
     use game_menu(title):
@@ -633,7 +687,7 @@ screen file_slots(title, delete=False, load=False, save=False):
 
                     $ slot = i + 1
                     # $ file_name = "1-{}.save".format(slot)
-                    $ save_exists = FileLoadable(slot)
+                    # $ save_exists = FileLoadable(slot)
 
                     button:
                         if delete:  # If directed at Delete Screen
@@ -646,9 +700,6 @@ screen file_slots(title, delete=False, load=False, save=False):
                         add FileScreenshot(slot):
                             xoffset 10
                             yoffset 10
-
-                        text FileSaveName(slot):
-                            style "chapter_title_slot"
 
                         # Display the Time and Date
                         text FileTime(slot, format=_("%m/%d/%Y           %H:%M:%S"), empty = "No Data"):
@@ -738,30 +789,20 @@ style slot_button:
 
 style state_text_slot:
     xalign 0.5
-    xoffset 10
-    yoffset 80
+    yoffset 100
     font gui.interface_text_font
     color "#000000"
-    size 23
-
-style chapter_title_slot:
-    xalign 0.5
-    xoffset 10
-    yoffset 50
-    font gui.interface_text_font
-    color "#000000"
-    size 23
-
-
+    size 26
 
 ## Preferences screen ##########################################################
 ## The preferences screen allows the player to configure the game to better suit themselves.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#preferences
 
-screen preferences(preferenceAudio = False): ## The Option Screen
+screen preferences(preferenceAudio = False, preferenceDisplay = False): ## The Option Screen
 
     tag menu
+    
 
     use game_menu(_("Options"), scroll="viewport"):
 
@@ -770,93 +811,135 @@ screen preferences(preferenceAudio = False): ## The Option Screen
             hbox:
                 
                 xoffset 60
-                yoffset 60
+                yoffset 10
 
                 box_wrap True
 
-                if renpy.variant("pc") or renpy.variant("web"):
-
-                    vbox:
-                        style_prefix "radio"
-                        label _("Display")
-                        textbutton _("Window") action Preference("display", "window")
-                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
-
-                if preferences and not preferenceAudio:
-
+                if preferences and not preferenceAudio and not preferenceDisplay:
+                    
                     vbox:
                         style_prefix "check"
                         label _("Skip")
-                        textbutton _("Unseen Text") action Preference("skip", "toggle")
-                        textbutton _("After Choices") action Preference("after choices", "toggle")
-                        textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle")) 
-                    
-                    hbox:
+                        spacing 10
 
+                        hbox:
+                            textbutton _("Unseen Text") action Preference("skip", "toggle")
+                            textbutton _("After Choices") action Preference("after choices", "toggle")
+                            textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
+                            spacing 60
+
+                    vbox:
+                        label _("Text Speed")
                         style_prefix "slider"
                         box_wrap True
-
-                        vbox:
-
-                            label _("Text Speed")
-
+                        yoffset 25
+                            
+                        hbox:
+                            yoffset 25
                             bar value Preference("text speed")
+                        
+                    vbox:
+                        label _("Auto-Forward Time")
+                        style_prefix "slider"
+                        box_wrap True
+                        yoffset 25
 
-                            label _("Auto-Forward Time")
-
+                        hbox:
+                            yoffset 25
                             bar value Preference("auto-forward time")
+   
 
                     if main_menu:
-                    
-                        vbox:
-                            style_prefix "check"
+                        
+                        hbox:
+                            
+                            box_wrap True
                             label _("Game Progress")
-                            textbutton _("Delete Save File") action ShowMenu("delete_slot")
-                            textbutton _("Reset Progress") action ShowMenu()
+                            spacing 50
+                            yoffset 120
 
-                            if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-                            ## Help isn't necessary or relevant to mobile devices.
-                                textbutton _("Help") action ShowMenu("help")
+                            hbox:
+                                textbutton _("Delete Save File") action ShowMenu("delete_slot")
+                                textbutton _("Reset Progress") action ShowMenu("confirm_reset")
+
+                                if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+                                ## Help isn't necessary or relevant to mobile devices.
+                                    textbutton _("Help") action ShowMenu("help")
+                                
+                                spacing 10
+                
+                elif preferenceDisplay:
+
+                    if renpy.variant("pc") or renpy.variant("web"):
+
+                        vbox:
+                            yoffset 50
+                            style_prefix "radio"
+                            label _("Display")
+                            spacing 20
+                            hbox:
+                                spacing 20
+                                textbutton _("Window") action Preference("display", "window")
+                                textbutton _("Fullscreen") action Preference("display", "fullscreen")
                             
                 else:
-
                     style_prefix "slider"
                     box_wrap True
                     vbox:
-                        xoffset 120
-                        yoffset 120
+
+                        if renpy.variant("mobile"):
+                            yoffset 120
+                        else:
+                            xoffset 120
+                            yoffset 120
 
                         if config.has_music:
-                            label _("Music Volume")
-
                             hbox:
-                                bar value Preference("music volume")
+                                label _("Music Volume")
+                                
+                                vbox:
+                                    style "hoverbar_offset"
+                                    bar value Preference("music volume")
 
                         if config.has_sound:
 
-                            label _("Sound Volume")
-
                             hbox:
-                                bar value Preference("sound volume")
+                                label _("Sound Volume")
 
-                                if config.sample_sound:
-                                    textbutton _("Test") action Play("sound", config.sample_sound)
+                                vbox:
+                                    style "hoverbar_offset"
+                                    bar value Preference("sound volume")
 
                         if config.has_voice:
-                            label _("Voice Volume")
 
                             hbox:
-                                bar value Preference("voice volume")
+                                label _("Voice Volume")
 
-                                if config.sample_voice:
-                                    textbutton _("Test") action Play("voice", config.sample_voice)
+                                vbox:
+                                    xoffset 55
+                                    yoffset 50
+                                    bar value Preference("voice volume")
+
+                                    if config.sample_voice:
+                                        textbutton _("Test") action Play("voice", config.sample_voice)
 
                         if config.has_music or config.has_sound or config.has_voice:
-                            null height gui.pref_spacing
 
-                            textbutton _("Mute All"):
-                                action Preference("all mute", "toggle")
-                                style "mute_all_button"
+                            vbox:
+                                null height gui.pref_spacing
+
+                                hbox:
+                                    spacing 30
+                                    textbutton _("Mute All"):
+                                        action Preference("all mute", "toggle")
+                                        style "mute_all_button"
+                            
+                            
+                                    if config.sample_sound:
+                                        textbutton _("Test Sound"):
+                                            action Play("sound", config.sample_sound)
+                                            style "mute_all_button"
+                                
                     
             ## Additional vboxes of type "radio_pref" or "check_pref" can be
             ## added here, to add additional creator-defined preferences.
@@ -884,8 +967,17 @@ screen preferenceAudio():
 
     use preferences (preferenceAudio = True)
 
+screen preferenceDisplay():
+
+    tag menu
+
+    use preferences (preferenceDisplay = True)
+
 
 screen preferenceMenu():
+
+    if main_menu:
+        style_prefix "navigation"
     
     hbox:
         xalign 0.1
@@ -893,16 +985,90 @@ screen preferenceMenu():
         yalign 0.5
         spacing 30
         vbox:
-            textbutton _("Game"):
-                action ShowMenu("preferences")
-                
+            textbutton _("Game") action ShowMenu("preferences")
+
+            if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+                ## Help isn't necessary or relevant to mobile devices.
+                textbutton _("Display") action ShowMenu("preferenceDisplay")
+
             textbutton _("Audio") action ShowMenu("preferenceAudio")
 
-style custom_image_button is default:
-    background "gui/button/choice_idle_background.png"  # Image for the normal state
-    hover_background "button_hover.png"  # Image for the hover state
-    color "#000000"
-    hover_color "#aaaaaa"
+style hoverbar_offset:
+    xoffset 50
+    yoffset 50
+
+screen confirm_play(): # Pop-up window when player wants to play from the begining
+
+    ## Ensure other screens do not get input while this screen is displayed.
+    modal True
+
+    zorder 200
+    style_prefix "confirm"
+
+    add "gui/overlay/confirm.png"
+
+    frame:
+
+        vbox:
+            xalign .5
+            yalign .5
+            spacing 45
+
+            label _("Are you sure you want to play the game from start? (All progress will reset.)"):
+                style "confirm_prompt"
+                xalign 0.5
+
+            hbox:
+                xalign 0.5
+                spacing 150
+
+                textbutton _("Yes") action [Function(delete_persistent_data), Start()] # Pwede nyo lagyan ng specific label sa loob ng parameter ex. Start("chapter2")
+                textbutton _("No") action Hide("confirm_play")
+
+ 
+screen confirm_reset(): # Pop-up window when player wants to reset progress
+
+    ## Ensure other screens do not get input while this screen is displayed.
+    modal True
+
+    zorder 200
+    style_prefix "confirm"
+
+    add "gui/overlay/confirm.png"
+
+    frame:
+
+        vbox:
+            xalign .5
+            yalign .5
+            spacing 45
+
+            label _("Are you sure you want to delete all your progress?"):
+                style "confirm_prompt"
+                xalign 0.5
+
+            hbox:
+                xalign 0.5
+                spacing 150
+
+                textbutton _("Yes") action [Function(delete_persistent_data), Hide("confirm_reset")]
+                textbutton _("No") action Hide("confirm_reset")
+
+    
+init python:
+
+    def delete_persistent_data():
+
+        # Reset persistent data (you can delete specific attributes or all data)
+        persistent._clear()  # Deletes all persistent data
+        
+        # Save changes
+        renpy.save_persistent()
+
+        # Restart interaction to reflect changes
+        renpy.restart_interaction()
+    
+        
 
 
 style pref_label is gui_label
@@ -987,7 +1153,6 @@ style slider_vbox:
 screen history():
 
     tag menu
-
     ## Avoid predicting this screen, as it can be very large.
     predict False
 
@@ -1020,6 +1185,13 @@ screen history():
 
         if not _history_list:
             label _("The dialogue history is empty.")
+
+    textbutton _("Back"):
+            #action ShowMenu("pause_menu")
+            action Return()
+            xalign 0.9
+            xoffset 10
+            yalign 0.9   
 
 
 ## This determines what tags are allowed to be displayed on the history screen.
@@ -1319,11 +1491,21 @@ screen skip_indicator():
         hbox:
             spacing 9
 
-            text _("Skipping")
+            add "gui/butterfly_white.png"
 
-            text "▸" at delayed_blink(0.0, 1.0) style "skip_triangle"
-            text "▸" at delayed_blink(0.2, 1.0) style "skip_triangle"
-            text "▸" at delayed_blink(0.4, 1.0) style "skip_triangle"
+            text _("Skipping"):
+                yalign 0.5
+                color "#ffffff"
+
+            text "▸" at delayed_blink(0.0, 1.0):
+                style "skip_triangle"
+                color "#ffffff"
+            text "▸" at delayed_blink(0.2, 1.0):
+                style "skip_triangle"
+                color "#ffffff"
+            text "▸" at delayed_blink(0.4, 1.0): 
+                style "skip_triangle"
+                color "#ffffff"
 
 
 ## This transform is used to blink the arrows one after another.
@@ -1356,6 +1538,7 @@ style skip_triangle:
     ## We have to use a font that has the BLACK RIGHT-POINTING SMALL TRIANGLE
     ## glyph in it.
     font "DejaVuSans.ttf"
+    yalign 0.5
 
 
 ## Notify screen ###############################################################
@@ -1626,13 +1809,54 @@ screen quick_menu(): ## Android Variant
         hbox:
             style_prefix "quick"
 
-            xalign 0.0
+            xoffset 50
             yalign 1.0
+            spacing 50
 
-            textbutton _("Back") action Rollback()
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Menu") action ShowMenu("pause_menu")
+            imagebutton: # History Button if the play want to check previous conversation
+                idle "gui/button/quick_history.png"
+                hover "gui/button/quick_history_hover.png"
+                yalign 0.5
+                action ShowMenu('history')
+
+            imagebutton: # Skip the Entire Dialogue
+                idle "gui/button/quick_skip.png"
+                hover "gui/button/quick_skip_hover.png"
+                selected "gui/button/quick_skip_hover.png"
+                yalign 0.5
+                action Skip() alternate Skip(fast=True, confirm=True)
+
+            imagebutton: # Auto-Forward so the player no need to click every transition
+                idle "gui/button/quick_play.png"
+                hover "gui/button/quick_play_hover.png"
+                yalign 0.5
+                action Preference("auto-forward", "toggle")
+
+
+            imagebutton: # Directly go to pause menu
+                idle "gui/button/quick_pause.png"
+                hover "gui/button/quick_pause_hover.png"
+                yalign 0.5
+                action ShowMenu("pause_menu")
+        
+        hbox:
+            style_prefix "quick"
+            xalign 1.0
+            yalign 1.0
+            spacing 30
+
+            imagebutton:
+                idle "gui/button/journal_logo.png"
+                #hover "gui/button/journal_logo_hover.png"
+                yalign 0.9
+                action ShowMenu("journal_screen")
+
+            if persistent.MC_power: # Kapag Nagkaroon na ng Power si MC, saka lang aapear ang option na to
+                imagebutton:
+                    idle "gui/button/rewind_button.png"
+                    #hover "gui/button/rewind_button_hover.png"
+                    yalign 0.9
+                    action Rollback()
 
 
 ## Style Window for Smartphones.
